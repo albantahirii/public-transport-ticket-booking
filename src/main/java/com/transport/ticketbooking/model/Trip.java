@@ -37,4 +37,8 @@ public class Trip {
     public LocalDateTime getDeparture() {
         return departure;
     }
+
+    public int getAvailableSeats() {
+        throw new UnsupportedOperationException("not implemented");
+    }
 }

@@ -1,0 +1,53 @@
+== compile main
+== compile tests
+== run tests
+Running com.transport.ticketbooking.service.BookingServiceTest
+  [FAIL] createsBooking - creates a booking confirmation with trip, passenger and seat count
+         -> UnsupportedOperationException: not implemented
+  [FAIL] reducesAvailableSeats - reduces the available seats of the trip by the booked amount
+         -> UnsupportedOperationException: not implemented
+  [FAIL] bookingIdsAreUnique - gives every booking a different, sequential id
+         -> UnsupportedOperationException: not implemented
+  [FAIL] acceptsMinimumQuantity - accepts the minimum of 1 passenger
+         -> UnsupportedOperationException: not implemented
+  [FAIL] acceptsMaximumQuantity - accepts the maximum of 10 passengers
+         -> UnsupportedOperationException: not implemented
+  [FAIL] bookingExactlyRemainingSeats - accepts a booking for exactly the remaining seats
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsWhenSoldOut - rejects a booking when the trip is sold out
+         -> AssertionError: Unexpected exception type thrown, expected: <com.transport.ticketbooking.exception.NoSeatsAvailableException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] rejectsOneSeatTooMany - rejects a booking for one seat more than available and leaves seats unchanged
+         -> AssertionError: Unexpected exception type thrown, expected: <com.transport.ticketbooking.exception.NoSeatsAvailableException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] preventsOverbooking - prevents overbooking: a second booking fails after the trip becomes full
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsZeroPassengers - rejects zero passengers
+         -> AssertionError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] rejectsNegativePassengers - rejects a negative number of passengers
+         -> AssertionError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] rejectsMoreThanMaximum - rejects more than 10 passengers in one booking and does not touch the seats
+         -> AssertionError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] rejectsNullTrip - rejects a missing trip
+         -> AssertionError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] rejectsNullPassengerName - rejects a null passenger name
+         -> AssertionError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.UnsupportedOperationException>
+  [FAIL] rejectsBlankPassengerName - rejects a blank passenger name
+         -> AssertionError: Unexpected exception type thrown, expected: <java.lang.IllegalArgumentException> but was: <java.lang.UnsupportedOperationException>
+  Tests run: 15, Failures: 15
+Running com.transport.ticketbooking.service.RouteSearchServiceTest
+  [PASS] unknownRouteReturnsEmptyList - returns an empty list when the route does not exist
+  [PASS] findsMatchingTrips - finds all trips matching origin, destination and date
+  [PASS] excludesOtherDates - does not return trips that run on a different date
+  [PASS] reverseDirectionNotMatched - does not match the reverse direction of a route
+  [PASS] noTripsOnDateReturnsEmptyList - returns an empty list when no trip runs on the requested date
+  [PASS] matchingIgnoresCaseAndWhitespace - matching ignores letter case and surrounding whitespace
+  [PASS] dayBoundaries - includes trips at 00:00 and 23:59 of the date but not 00:00 of the next day
+  [PASS] emptyTimetable - works with an empty timetable
+  [PASS] rejectsNullOrigin - rejects a null origin
+  [PASS] rejectsBlankOrigin - rejects a blank origin
+  [PASS] rejectsNullDestination - rejects a null destination
+  [PASS] rejectsBlankDestination - rejects a blank destination
+  [PASS] rejectsNullDate - rejects a null travel date
+  [PASS] rejectsSameOriginAndDestination - rejects identical origin and destination
+  Tests run: 14, Failures: 0
+TOTAL Tests run: 29, Failures: 15
+exit=1
