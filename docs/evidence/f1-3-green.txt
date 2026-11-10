@@ -1,0 +1,21 @@
+== compile main
+== compile tests
+== run tests
+Running com.transport.ticketbooking.service.RouteSearchServiceTest
+  [PASS] findsMatchingTrips - finds all trips matching origin, destination and date
+  [PASS] excludesOtherDates - does not return trips that run on a different date
+  [PASS] reverseDirectionNotMatched - does not match the reverse direction of a route
+  [PASS] unknownRouteReturnsEmptyList - returns an empty list when the route does not exist
+  [PASS] noTripsOnDateReturnsEmptyList - returns an empty list when no trip runs on the requested date
+  [PASS] matchingIgnoresCaseAndWhitespace - matching ignores letter case and surrounding whitespace
+  [PASS] dayBoundaries - includes trips at 00:00 and 23:59 of the date but not 00:00 of the next day
+  [PASS] emptyTimetable - works with an empty timetable
+  [PASS] rejectsNullOrigin - rejects a null origin
+  [PASS] rejectsBlankOrigin - rejects a blank origin
+  [PASS] rejectsNullDestination - rejects a null destination
+  [PASS] rejectsBlankDestination - rejects a blank destination
+  [PASS] rejectsNullDate - rejects a null travel date
+  [PASS] rejectsSameOriginAndDestination - rejects identical origin and destination
+  Tests run: 14, Failures: 0
+TOTAL Tests run: 14, Failures: 0
+exit=0
