@@ -1,0 +1,73 @@
+== compile main
+== compile tests
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:8: error: package com.transport.ticketbooking.exception does not exist
+import com.transport.ticketbooking.exception.NoSeatsAvailableException;
+                                            ^
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:9: error: cannot find symbol
+import com.transport.ticketbooking.model.Booking;
+                                        ^
+  symbol:   class Booking
+  location: package com.transport.ticketbooking.model
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:20: error: cannot find symbol
+    private BookingService service;
+            ^
+  symbol:   class BookingService
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:29: error: cannot find symbol
+        service = new BookingService();
+                      ^
+  symbol:   class BookingService
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:39: error: cannot find symbol
+        Booking booking = service.book(trip, "Alban", 2);
+        ^
+  symbol:   class Booking
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:54: error: cannot find symbol
+        assertEquals(38, trip.getAvailableSeats());
+                             ^
+  symbol:   method getAvailableSeats()
+  location: variable trip of type Trip
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:62: error: cannot find symbol
+        Booking first = service.book(trip, "Alban", 1);
+        ^
+  symbol:   class Booking
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:63: error: cannot find symbol
+        Booking second = service.book(trip, "Era", 1);
+        ^
+  symbol:   class Booking
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:90: error: cannot find symbol
+        assertEquals(0, trip.getAvailableSeats());
+                            ^
+  symbol:   method getAvailableSeats()
+  location: variable trip of type Trip
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:98: error: cannot find symbol
+        assertThrows(NoSeatsAvailableException.class, () -> service.book(tripWithSeats(0), "Alban", 1));
+                     ^
+  symbol:   class NoSeatsAvailableException
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:106: error: cannot find symbol
+        assertThrows(NoSeatsAvailableException.class, () -> service.book(trip, "Alban", 4));
+                     ^
+  symbol:   class NoSeatsAvailableException
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:108: error: cannot find symbol
+        assertEquals(3, trip.getAvailableSeats());
+                            ^
+  symbol:   method getAvailableSeats()
+  location: variable trip of type Trip
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:117: error: cannot find symbol
+        assertThrows(NoSeatsAvailableException.class, () -> service.book(trip, "Era", 1));
+                     ^
+  symbol:   class NoSeatsAvailableException
+  location: class BookingServiceTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/BookingServiceTest.java:141: error: cannot find symbol
+        assertEquals(40, trip.getAvailableSeats());
+                             ^
+  symbol:   method getAvailableSeats()
+  location: variable trip of type Trip
+14 errors
+COMPILATION FAILURE
+exit=3
