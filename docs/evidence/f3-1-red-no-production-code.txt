@@ -1,0 +1,15 @@
+== compile main
+== compile tests
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/PriceCalculatorTest.java:14: error: cannot find symbol
+    private PriceCalculator calculator;
+            ^
+  symbol:   class PriceCalculator
+  location: class PriceCalculatorTest
+/home/claude/public-transport-ticket-booking/src/test/java/com/transport/ticketbooking/service/PriceCalculatorTest.java:18: error: cannot find symbol
+        calculator = new PriceCalculator();
+                         ^
+  symbol:   class PriceCalculator
+  location: class PriceCalculatorTest
+2 errors
+COMPILATION FAILURE
+exit=3
