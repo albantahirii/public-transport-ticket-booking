@@ -2,35 +2,44 @@ package com.transport.ticketbooking.service;
 
 import com.transport.ticketbooking.model.Trip;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+/** Finds trips by origin, destination and travel date. */
 public class RouteSearchService {
 
     private final List<Trip> trips;
 
     public RouteSearchService(List<Trip> trips) {
-        this.trips = trips;
+        this.trips = List.copyOf(trips);
     }
 
     public List<Trip> search(String origin, String destination, LocalDate date) {
-        if (origin == null || origin.isBlank() || destination == null || destination.isBlank()
-                || date == null) {
-            throw new IllegalArgumentException("origin, destination and date are required");
+        String from = requireText(origin, "origin");
+        String to = requireText(destination, "destination");
+        if (date == null) {
+            throw new IllegalArgumentException("date is required");
         }
-        String from = origin.trim();
-        String to = destination.trim();
         if (from.equalsIgnoreCase(to)) {
             throw new IllegalArgumentException("origin and destination must differ");
         }
-        List<Trip> result = new ArrayList<>();
-        for (Trip trip : trips) {
-            if (trip.getOrigin().equalsIgnoreCase(from)
-                    && trip.getDestination().equalsIgnoreCase(to)
-                    && trip.getDeparture().toLocalDate().equals(date)) {
-                result.add(trip);
-            }
+        return trips.stream()
+                .filter(trip -> runsOnRoute(trip, from, to) && runsOn(trip, date))
+                .collect(Collectors.toList());
+    }
+
+    private static String requireText(String value, String field) {
+        if (value == null || value.isBlank()) {
+            throw new IllegalArgumentException(field + " is required");
         }
-        return result;
+        return value.trim();
+    }
+
+    private static boolean runsOnRoute(Trip trip, String from, String to) {
+        return trip.getOrigin().equalsIgnoreCase(from) && trip.getDestination().equalsIgnoreCase(to);
+    }
+
+    private static boolean runsOn(Trip trip, LocalDate date) {
+        return trip.getDeparture().toLocalDate().equals(date);
     }
 }
