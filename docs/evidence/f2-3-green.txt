@@ -1,0 +1,38 @@
+== compile main
+== compile tests
+== run tests
+Running com.transport.ticketbooking.service.BookingServiceTest
+  [PASS] createsBooking - creates a booking confirmation with trip, passenger and seat count
+  [PASS] reducesAvailableSeats - reduces the available seats of the trip by the booked amount
+  [PASS] bookingIdsAreUnique - gives every booking a different, sequential id
+  [PASS] acceptsMinimumQuantity - accepts the minimum of 1 passenger
+  [PASS] acceptsMaximumQuantity - accepts the maximum of 10 passengers
+  [PASS] bookingExactlyRemainingSeats - accepts a booking for exactly the remaining seats
+  [PASS] rejectsWhenSoldOut - rejects a booking when the trip is sold out
+  [PASS] rejectsOneSeatTooMany - rejects a booking for one seat more than available and leaves seats unchanged
+  [PASS] preventsOverbooking - prevents overbooking: a second booking fails after the trip becomes full
+  [PASS] rejectsZeroPassengers - rejects zero passengers
+  [PASS] rejectsNegativePassengers - rejects a negative number of passengers
+  [PASS] rejectsMoreThanMaximum - rejects more than 10 passengers in one booking and does not touch the seats
+  [PASS] rejectsNullTrip - rejects a missing trip
+  [PASS] rejectsNullPassengerName - rejects a null passenger name
+  [PASS] rejectsBlankPassengerName - rejects a blank passenger name
+  Tests run: 15, Failures: 0
+Running com.transport.ticketbooking.service.RouteSearchServiceTest
+  [PASS] unknownRouteReturnsEmptyList - returns an empty list when the route does not exist
+  [PASS] noTripsOnDateReturnsEmptyList - returns an empty list when no trip runs on the requested date
+  [PASS] matchingIgnoresCaseAndWhitespace - matching ignores letter case and surrounding whitespace
+  [PASS] findsMatchingTrips - finds all trips matching origin, destination and date
+  [PASS] excludesOtherDates - does not return trips that run on a different date
+  [PASS] reverseDirectionNotMatched - does not match the reverse direction of a route
+  [PASS] dayBoundaries - includes trips at 00:00 and 23:59 of the date but not 00:00 of the next day
+  [PASS] emptyTimetable - works with an empty timetable
+  [PASS] rejectsNullOrigin - rejects a null origin
+  [PASS] rejectsBlankOrigin - rejects a blank origin
+  [PASS] rejectsNullDestination - rejects a null destination
+  [PASS] rejectsBlankDestination - rejects a blank destination
+  [PASS] rejectsNullDate - rejects a null travel date
+  [PASS] rejectsSameOriginAndDestination - rejects identical origin and destination
+  Tests run: 14, Failures: 0
+TOTAL Tests run: 29, Failures: 0
+exit=0

@@ -2,19 +2,31 @@ package com.transport.ticketbooking.model;
 
 public class Booking {
 
+    private final String id;
+    private final Trip trip;
+    private final String passengerName;
+    private final int seats;
+
+    public Booking(String id, Trip trip, String passengerName, int seats) {
+        this.id = id;
+        this.trip = trip;
+        this.passengerName = passengerName;
+        this.seats = seats;
+    }
+
     public String getId() {
-        throw new UnsupportedOperationException("not implemented");
+        return id;
     }
 
     public Trip getTrip() {
-        throw new UnsupportedOperationException("not implemented");
+        return trip;
     }
 
     public String getPassengerName() {
-        throw new UnsupportedOperationException("not implemented");
+        return passengerName;
     }
 
     public int getSeats() {
-        throw new UnsupportedOperationException("not implemented");
+        return seats;
     }
 }

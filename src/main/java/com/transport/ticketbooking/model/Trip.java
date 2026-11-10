@@ -1,5 +1,6 @@
 package com.transport.ticketbooking.model;
 
+import com.transport.ticketbooking.exception.NoSeatsAvailableException;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -9,7 +10,7 @@ public class Trip {
     private final String origin;
     private final String destination;
     private final LocalDateTime departure;
-    private final int availableSeats;
+    private int availableSeats;
     private final BigDecimal unitPrice;
 
     public Trip(String id, String origin, String destination, LocalDateTime departure,
@@ -39,6 +40,14 @@ public class Trip {
     }
 
     public int getAvailableSeats() {
-        throw new UnsupportedOperationException("not implemented");
+        return availableSeats;
+    }
+
+    public void reserveSeats(int seats) {
+        if (seats > availableSeats) {
+            throw new NoSeatsAvailableException(
+                    "Requested " + seats + " seat(s) but only " + availableSeats + " available");
+        }
+        availableSeats -= seats;
     }
 }
