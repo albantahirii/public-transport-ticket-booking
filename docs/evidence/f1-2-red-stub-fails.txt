@@ -1,0 +1,35 @@
+== compile main
+== compile tests
+== run tests
+Running com.transport.ticketbooking.service.RouteSearchServiceTest
+  [FAIL] findsMatchingTrips - finds all trips matching origin, destination and date
+         -> UnsupportedOperationException: not implemented
+  [FAIL] excludesOtherDates - does not return trips that run on a different date
+         -> UnsupportedOperationException: not implemented
+  [FAIL] reverseDirectionNotMatched - does not match the reverse direction of a route
+         -> UnsupportedOperationException: not implemented
+  [FAIL] unknownRouteReturnsEmptyList - returns an empty list when the route does not exist
+         -> UnsupportedOperationException: not implemented
+  [FAIL] noTripsOnDateReturnsEmptyList - returns an empty list when no trip runs on the requested date
+         -> UnsupportedOperationException: not implemented
+  [FAIL] matchingIgnoresCaseAndWhitespace - matching ignores letter case and surrounding whitespace
+         -> UnsupportedOperationException: not implemented
+  [FAIL] dayBoundaries - includes trips at 00:00 and 23:59 of the date but not 00:00 of the next day
+         -> UnsupportedOperationException: not implemented
+  [FAIL] emptyTimetable - works with an empty timetable
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsNullOrigin - rejects a null origin
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsBlankOrigin - rejects a blank origin
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsNullDestination - rejects a null destination
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsBlankDestination - rejects a blank destination
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsNullDate - rejects a null travel date
+         -> UnsupportedOperationException: not implemented
+  [FAIL] rejectsSameOriginAndDestination - rejects identical origin and destination
+         -> UnsupportedOperationException: not implemented
+  Tests run: 14, Failures: 14
+TOTAL Tests run: 14, Failures: 14
+exit=1
