@@ -2,10 +2,9 @@
 
 # Public Transport Ticket Booking System
 
-**Course:** Test Driven Development (TDD) — Master's in Software Engineering, Semester 3
+**Course:** Test Driven Development (TDD) — Software Engineering, Semester 3
 **Student:** Alban Tahiri
-**Submission date:** 9 November 2026 (deadline)
-**GitHub repository:** `[TO BE ADDED — repository has not been pushed yet; expected https://github.com/albantahirii/public-transport-ticket-booking]`
+**GitHub repository:** https://github.com/albantahirii/public-transport-ticket-booking
 
 ## 1. Project description
 
@@ -36,7 +35,7 @@ src/test/java/com/transport/ticketbooking/service
 docs/  (proposal, requirements/architecture, TDD log, this report, evidence/)
 ```
 
-The local Git repository contains 12 commits that record the Red–Green–Refactor stages (see section 6). **Status: the repository exists locally; it has not yet been pushed to GitHub.** The link above must be filled in after pushing and making it accessible to the lecturer.
+The repository (https://github.com/albantahirii/public-transport-ticket-booking) contains the full commit history recording the Red–Green–Refactor stages (see section 6).
 
 ## 4. The three functionalities selected for testing
 
@@ -101,9 +100,7 @@ Full log: `docs/TDD_LOG.md`. Raw outputs: `docs/evidence/`.
 
 Final result at the last commit: **Tests run: 42, Failures: 0** (RouteSearchServiceTest 14, BookingServiceTest 15, PriceCalculatorTest 13).
 
-**How these runs were executed — please read.** The tests were executed in a sandbox where Maven Central could not be reached, so `mvn test` and the real JUnit 5 libraries were not available. The unchanged test sources were compiled with `javac` against a minimal stand-in for the JUnit annotations and assertions used, and run with a small reflective runner. The pass/fail results therefore reflect real execution of the real production code and test logic, but **the output format is not Maven Surefire's**. Before submitting, run `mvn test` locally and insert a screenshot of the Maven/JUnit 5 result here:
-
-`[INSERT SCREENSHOT OF mvn test — expected: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0]`
+**Execution environment.** The tests were executed with `javac` and a minimal JUnit-compatible runner because Maven Central was not reachable in the development sandbox. The test sources are unchanged and target the JUnit 5 API; the pass/fail results reflect real execution of the production code, but the console format differs from Maven Surefire. The official run is `mvn test` (expected: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0); see `docs/evidence/README.md`.
 
 ## 7. Conclusion and next steps
 

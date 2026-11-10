@@ -1,7 +1,6 @@
 # Project Proposal — Public Transport Ticket Booking System
 
-**Course:** Test Driven Development (TDD) — Master's in Software Engineering, Semester 3
-**Submission:** Week 1 (deadline 9 November 2026)
+**Course:** Test Driven Development (TDD) — Software Engineering, Semester 3
 
 ## 1. Title
 

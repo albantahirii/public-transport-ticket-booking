@@ -1,7 +1,6 @@
 # Projekt-propozim — Sistemi i Rezervimit të Biletave të Transportit Publik
 
-**Lënda:** Zhvillimi i drejtuar nga testimi (Test Driven Development – TDD) — Master në Inxhinieri Softuerike, Semestri 3
-**Dorëzimi:** Java 1 (afati: 9 nëntor 2026)
+**Lënda:** Zhvillimi i drejtuar nga testimi (Test Driven Development – TDD) — Inxhinieri Softuerike, Semestri 3
 
 ## 1. Titulli
 

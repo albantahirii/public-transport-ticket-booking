@@ -2,7 +2,7 @@
 
 A Java application, developed with **Test-Driven Development (TDD)**, that lets passengers search bus trips, book tickets and (in later phases) manage their reservations.
 
-> **Course:** Test Driven Development — Master's in Software Engineering, Semester 3
+> **Course:** Test Driven Development — Software Engineering, Semester 3
 > **Current phase:** Week 1 — requirements, repository setup and first three tested features
 
 ## What problem does it solve?
@@ -66,4 +66,4 @@ See [`docs/TDD_LOG.md`](docs/TDD_LOG.md) and `git log` for the recorded cycles.
 
 ## Authors
 
-- _Student name(s) — to be filled in_
+- Alban Tahiri ([@albantahirii](https://github.com/albantahirii))

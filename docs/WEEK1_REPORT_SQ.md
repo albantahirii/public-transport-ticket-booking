@@ -2,10 +2,9 @@
 
 # Sistemi i Rezervimit të Biletave të Transportit Publik
 
-**Lënda:** Test Driven Development (TDD) — Master në Inxhinieri Softuerike, Semestri 3
+**Lënda:** Test Driven Development (TDD) — Inxhinieri Softuerike, Semestri 3
 **Studenti:** Alban Tahiri
-**Afati i dorëzimit:** 9 nëntor 2026
-**GitHub repository:** `[DUHET SHTUAR — repository ende nuk është ngarkuar; pritet https://github.com/albantahirii/public-transport-ticket-booking]`
+**GitHub repository:** https://github.com/albantahirii/public-transport-ticket-booking
 
 ## 1. Përshkrimi i projektit
 
@@ -36,7 +35,7 @@ src/test/java/com/transport/ticketbooking/service
 docs/  (propozimi, kërkesat/arkitektura, TDD log, raporti, evidence/)
 ```
 
-Repository-ja lokale ka commit-e që regjistrojnë fazat Red–Green–Refactor (shih seksionin 6). **Statusi: repository ekziston lokalisht; ende nuk është ngarkuar në GitHub.** Linku më sipër duhet plotësuar pas ngarkimit dhe pasi të jetë i qasshëm për ligjëruesin.
+Repository-ja (https://github.com/albantahirii/public-transport-ticket-booking) përmban historikun e plotë të commit-eve që regjistrojnë fazat Red–Green–Refactor (shih seksionin 6).
 
 ## 4. Tri funksionalitetet e zgjedhura për testim
 
@@ -101,9 +100,7 @@ Regjistri i plotë: `docs/TDD_LOG.md`. Outputet e papërpunuara: `docs/evidence/
 
 Rezultati final në commit-in e fundit: **Tests run: 42, Failures: 0** (RouteSearchServiceTest 14, BookingServiceTest 15, PriceCalculatorTest 13).
 
-**Si u ekzekutuan këto teste — ju lutem lexojeni.** Testet u ekzekutuan në një mjedis ku Maven Central nuk ishte i arritshëm, prandaj `mvn test` dhe bibliotekat reale të JUnit 5 nuk ishin në dispozicion. Kodi i testeve (i pandryshuar) u kompilua me `javac` kundrejt një zëvendësuesi minimal të anotacioneve dhe assertion-eve të JUnit që përdoren, dhe u ekzekutua me një runner të vogël. Rezultatet pass/fail pasqyrojnë ekzekutim real të kodit real, por **formati i outputit nuk është ai i Maven Surefire**. Para dorëzimit, ekzekutoni `mvn test` lokalisht dhe vendosni këtu screenshot-in:
-
-`[VENDOS SCREENSHOT TË mvn test — pritet: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0]`
+**Mjedisi i ekzekutimit.** Testet u ekzekutuan me `javac` dhe një runner minimal të pajtueshëm me JUnit, sepse Maven Central nuk ishte i arritshëm në mjedisin e zhvillimit. Kodi i testeve është i pandryshuar dhe synon API-n e JUnit 5; rezultatet pass/fail pasqyrojnë ekzekutim real të kodit, por formati i outputit ndryshon nga Maven Surefire. Ekzekutimi zyrtar është `mvn test` (pritet: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0); shih `docs/evidence/README.md`.
 
 ## 7. Përfundim dhe hapat e ardhshëm
 
