@@ -100,7 +100,7 @@ Regjistri i plotë: `docs/TDD_LOG.md`. Outputet e papërpunuara: `docs/evidence/
 
 Rezultati final në commit-in e fundit: **Tests run: 42, Failures: 0** (RouteSearchServiceTest 14, BookingServiceTest 15, PriceCalculatorTest 13).
 
-**Mjedisi i ekzekutimit.** Testet u ekzekutuan me `javac` dhe një runner minimal të pajtueshëm me JUnit, sepse Maven Central nuk ishte i arritshëm në mjedisin e zhvillimit. Kodi i testeve është i pandryshuar dhe synon API-n e JUnit 5; rezultatet pass/fail pasqyrojnë ekzekutim real të kodit, por formati i outputit ndryshon nga Maven Surefire. Ekzekutimi zyrtar është `mvn test` (pritet: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0); shih `docs/evidence/README.md`.
+**Ekzekutimi zyrtar (Maven + JUnit 5).** `mvn test` u ekzekutua më 10 nëntor 2026 dhe përfundoi me **BUILD SUCCESS: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0** (RouteSearchServiceTest 14, PriceCalculatorTest 13, BookingServiceTest 15). Outputi i konsolës gjendet te `docs/evidence/mvn-test-official.txt`. Outputet e mëparshme të fazave Red/Green/Refactor te `docs/evidence/` u kapën gjatë zhvillimit me `javac` dhe një runner minimal të pajtueshëm me JUnit (shih `docs/evidence/README.md`), ndaj formati i tyre ndryshon nga Surefire; kodi i testeve është i njëjtë.
 
 ## 7. Përfundim dhe hapat e ardhshëm
 

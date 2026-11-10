@@ -39,5 +39,5 @@ Test scenarios: normal (1 passenger, several passengers, two-decimal result); bo
 
 - Red→Green was done **per feature** (the full set of tests for a feature was written first), not one test at a time. In Weeks 2–5 the cycles will be smaller.
 - The Booking feature has no separate refactor commit; its duplicated validation was refactored once Feature 3 revealed the duplication.
-- Results above come from the stand-in runner described in `evidence/README.md`; re-run `mvn test` for official JUnit 5/Surefire output.
+- Per-stage results above were captured with the stand-in runner described in `evidence/README.md`; the final state was confirmed by an official `mvn test` run (42 tests, 0 failures, BUILD SUCCESS) in `evidence/mvn-test-official.txt`.
 - Design choices that are assumptions, not from the assignment: maximum 10 passengers per booking; unit price of 0 is rejected.

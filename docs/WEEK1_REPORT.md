@@ -100,7 +100,7 @@ Full log: `docs/TDD_LOG.md`. Raw outputs: `docs/evidence/`.
 
 Final result at the last commit: **Tests run: 42, Failures: 0** (RouteSearchServiceTest 14, BookingServiceTest 15, PriceCalculatorTest 13).
 
-**Execution environment.** The tests were executed with `javac` and a minimal JUnit-compatible runner because Maven Central was not reachable in the development sandbox. The test sources are unchanged and target the JUnit 5 API; the pass/fail results reflect real execution of the production code, but the console format differs from Maven Surefire. The official run is `mvn test` (expected: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0); see `docs/evidence/README.md`.
+**Official execution (Maven + JUnit 5).** `mvn test` was run on 10 November 2026 and finished with **BUILD SUCCESS: Tests run: 42, Failures: 0, Errors: 0, Skipped: 0** (RouteSearchServiceTest 14, PriceCalculatorTest 13, BookingServiceTest 15). The console output is in `docs/evidence/mvn-test-official.txt`. The earlier per-stage Red/Green/Refactor outputs in `docs/evidence/` were captured during development with `javac` and a minimal JUnit-compatible runner (see `docs/evidence/README.md`), so their console format differs from Surefire; the test sources are the same.
 
 ## 7. Conclusion and next steps
 

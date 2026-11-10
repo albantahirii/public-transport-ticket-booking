@@ -1,0 +1,24 @@
+Official run: mvn test (Apache Maven, JUnit 5.10.2 / Surefire) on the author's MacBook
+Executed: 2026-11-10T02:01:19+01:00 | Commit under test: 17124f5
+(Console output copied from the terminal; download lines omitted.)
+
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.transport.ticketbooking.service.RouteSearchServiceTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.051 s -- in com.transport.ticketbooking.service.RouteSearchServiceTest
+[INFO] Running com.transport.ticketbooking.service.PriceCalculatorTest
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.transport.ticketbooking.service.PriceCalculatorTest
+[INFO] Running com.transport.ticketbooking.service.BookingServiceTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.transport.ticketbooking.service.BookingServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 42, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.470 s
+[INFO] Finished at: 2026-11-10T02:01:19+01:00
+[INFO] ------------------------------------------------------------------------

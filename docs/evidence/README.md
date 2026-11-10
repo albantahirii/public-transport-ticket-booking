@@ -1,4 +1,10 @@
-# Test execution evidence — how these files were produced
+# Test execution evidence
+
+## Official run (Maven + JUnit 5)
+
+`mvn-test-official.txt` is the console output of `mvn test` run on the author's machine on 2026-11-10: **Tests run: 42, Failures: 0, Errors: 0, Skipped: 0 — BUILD SUCCESS**. This is the authoritative result.
+
+## Per-stage development runs (files `f1-*` to `f3-*`)
 
 Each `.txt` file here is the **unedited console output of a real test run** captured at one stage of the TDD cycle (see `../TDD_LOG.md`).
 
@@ -10,13 +16,13 @@ These runs were produced in an offline authoring sandbox where **Maven Central w
 - The result lines `[PASS]`/`[FAIL]` and "Tests run: N, Failures: M" come from that stand-in runner, **not** from Maven Surefire.
 - Behaviour of the production code (what passes/fails) is real; the report format is not Surefire's.
 
-## Reproduce with real Maven + JUnit 5 (recommended before submitting)
+## Reproduce
 
 ```bash
 mvn test
 ```
 
-Expected result at the final commit: `Tests run: 42, Failures: 0, Errors: 0, Skipped: 0`. Replace or add a screenshot of that run in the submission report.
+Expected at the final commit: `Tests run: 42, Failures: 0, Errors: 0, Skipped: 0`.
 
 ## File index
 
