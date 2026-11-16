@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /** Feature 3 - Ticket price calculation. Tests written BEFORE the implementation (TDD). */
 class PriceCalculatorTest {
@@ -86,24 +88,10 @@ class PriceCalculatorTest {
                 () -> calculator.calculateTotal(BigDecimal.ZERO, 1));
     }
 
-    @Test
-    @DisplayName("rejects zero passengers")
-    void rejectsZeroPassengers() {
+    @ParameterizedTest(name = "rejects {0} passengers")
+    @ValueSource(ints = {-3, 0, 11})
+    void rejectsInvalidPassengerCount(int passengers) {
         assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculateTotal(new BigDecimal("10.00"), 0));
-    }
-
-    @Test
-    @DisplayName("rejects a negative number of passengers")
-    void rejectsNegativePassengers() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculateTotal(new BigDecimal("10.00"), -3));
-    }
-
-    @Test
-    @DisplayName("rejects more than 10 passengers")
-    void rejectsTooManyPassengers() {
-        assertThrows(IllegalArgumentException.class,
-                () -> calculator.calculateTotal(new BigDecimal("10.00"), 11));
+                () -> calculator.calculateTotal(new BigDecimal("10.00"), passengers));
     }
 }
