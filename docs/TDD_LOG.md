@@ -41,3 +41,42 @@ Test scenarios: normal (1 passenger, several passengers, two-decimal result); bo
 - The Booking feature has no separate refactor commit; its duplicated validation was refactored once Feature 3 revealed the duplication.
 - Per-stage results above were captured with the stand-in runner described in `evidence/README.md`; the final state was confirmed by an official `mvn test` run (42 tests, 0 failures, BUILD SUCCESS) in `evidence/mvn-test-official.txt`.
 - Design choices that are assumptions, not from the assignment: maximum 10 passengers per booking; unit price of 0 is rejected.
+
+---
+
+# Java 3 — Shënime në shqip (pikat 1–7)
+
+## Funksionaliteti i ri: anulimi i rezervimit (FR-5)
+
+`BookingService.cancel(bookingId)` e shënon rezervimin si të anuluar dhe ia kthen ulëset udhëtimit.
+
+| Faza | Çfarë u bë | Rezultati (`mvn clean test`) | Commit |
+|---|---|---|---|
+| RED | U shkrua `BookingCancellationTest` (5 teste) para kodit. | `COMPILATION ERROR`: `cancel` dhe `isCancelled` nuk ekzistojnë | `59ebaaf` |
+| GREEN | `Booking.cancel()`/`isCancelled()`, `Trip.releaseSeats()`, `BookingService.cancel()`. | 47 teste, 0 dështime | `7ee15aa` |
+| REFACTOR | Tri testet për numër të pavlefshëm pasagjerësh u bashkuan në një `@ParameterizedTest`. | 47 teste, 0 dështime | `6a97680` |
+| TEST | Vlerat kufitare 1, 2, 9, 10 me `@CsvSource`. | 49 teste, 0 dështime | `3022fd6` |
+
+## Si plotësohen pikat e detyrës
+
+| Pika | Ku gjendet |
+|---|---|
+| 1. Kodi burimor | `model/` (`Trip`, `Booking`), `service/` (`RouteSearchService`, `BookingService`, `PriceCalculator`, `PassengerCount`), `exception/` |
+| 2. Testet JUnit 5 | Një klasë testuese për çdo funksionalitet: `RouteSearchServiceTest`, `BookingServiceTest`, `PriceCalculatorTest`, `BookingCancellationTest` |
+| 3. Pozitive / negative | Çdo klasë testuese ka seksionet *positive/normal* dhe *negative/invalid* |
+| 4. Vlerat kufitare | Pasagjerët: 0, 1, 2, 9, 10, 11. Ulëset: saktësisht sa ka dhe +1. Ora: 00:00 dhe 23:59. Çmimi: 0.01 |
+| 5. Branch testing | Shih tabelën më poshtë |
+| 6. `@ParameterizedTest` | `PriceCalculatorTest`: `rejectsInvalidPassengerCount` (`@ValueSource`) dhe `acceptsPassengerCountsFromMinToMax` (`@CsvSource`) |
+| 7. Procesi TDD | Commit-et `test(...): RED` → `feat(...): GREEN` → `refactor(...)` në `git log` (java 1 dhe java 3) |
+
+## Branch testing: çdo degë e kushteve dhe testi që e ekzekuton
+
+| Kushti në kod | Dega `true` | Dega `false` |
+|---|---|---|
+| `Trip.reserveSeats`: `seats > availableSeats` | `rejectsOneSeatTooMany`, `rejectsWhenSoldOut` | `bookingExactlyRemainingSeats` |
+| `PassengerCount.require`: `< 1` ose `> 10` | `rejectsInvalidPassengerCount` (-3, 0, 11) | `acceptsPassengerCountsFromMinToMax` (1, 2, 9, 10) |
+| `PriceCalculator`: çmimi `null` ose `<= 0` | `rejectsNullPrice`, `rejectsZeroPrice`, `rejectsNegativePrice` | `multiplePassengers` |
+| `BookingService.cancel`: id bosh | `rejectsBlankBookingId` | `cancelMarksBookingAsCancelled` |
+| `BookingService.cancel`: rezervimi nuk ekziston | `rejectsUnknownBooking` | `cancelRestoresSeats` |
+| `Booking.cancel`: tashmë i anuluar | `rejectsDoubleCancellation` | `cancelMarksBookingAsCancelled` |
+| `RouteSearchService.search`: origjina = destinacioni | `rejectsSameOriginAndDestination` | `findsMatchingTrips` |
