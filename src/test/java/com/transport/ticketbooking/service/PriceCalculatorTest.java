@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /** Feature 3 - Ticket price calculation. Tests written BEFORE the implementation (TDD). */
@@ -23,12 +24,6 @@ class PriceCalculatorTest {
     // ---------- normal cases ----------
 
     @Test
-    @DisplayName("price for one passenger equals the unit price")
-    void singlePassenger() {
-        assertEquals(new BigDecimal("10.00"), calculator.calculateTotal(new BigDecimal("10.00"), 1));
-    }
-
-    @Test
     @DisplayName("total is unit price multiplied by the number of passengers")
     void multiplePassengers() {
         assertEquals(new BigDecimal("37.50"), calculator.calculateTotal(new BigDecimal("12.50"), 3));
@@ -42,10 +37,10 @@ class PriceCalculatorTest {
 
     // ---------- boundary cases ----------
 
-    @Test
-    @DisplayName("supports the maximum of 10 passengers")
-    void maximumPassengers() {
-        assertEquals(new BigDecimal("72.50"), calculator.calculateTotal(new BigDecimal("7.25"), 10));
+    @ParameterizedTest(name = "{0} passenger(s) x 10.00 = {1}")
+    @CsvSource({"1, 10.00", "2, 20.00", "9, 90.00", "10, 100.00"})
+    void acceptsPassengerCountsFromMinToMax(int passengers, BigDecimal expectedTotal) {
+        assertEquals(expectedTotal, calculator.calculateTotal(new BigDecimal("10.00"), passengers));
     }
 
     @Test
