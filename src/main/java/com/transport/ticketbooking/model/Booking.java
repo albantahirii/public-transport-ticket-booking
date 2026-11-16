@@ -6,6 +6,7 @@ public class Booking {
     private final Trip trip;
     private final String passengerName;
     private final int seats;
+    private boolean cancelled;
 
     public Booking(String id, Trip trip, String passengerName, int seats) {
         this.id = id;
@@ -28,5 +29,16 @@ public class Booking {
 
     public int getSeats() {
         return seats;
+    }
+
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void cancel() {
+        if (cancelled) {
+            throw new IllegalStateException("booking " + id + " is already cancelled");
+        }
+        cancelled = true;
     }
 }

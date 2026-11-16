@@ -50,4 +50,8 @@ public class Trip {
         }
         availableSeats -= seats;
     }
+
+    public void releaseSeats(int seats) {
+        availableSeats += seats;
+    }
 }
