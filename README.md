@@ -21,30 +21,6 @@ Pasagjerët duhet të gjejnë udhëtimet e lira, të rezervojnë ulëse dhe të 
 ## Arkitektura
 
 Arkitekturë me shtresa: logjika e biznesit është te `service`, të dhënat te `model`, gabimet e domenit te `exception`.
-cat > README.md <<'EOF'
-# Public Transport Ticket Booking System
-
-Aplikacion Java për rezervimin e biletave të transportit publik, i zhvilluar me **Test-Driven Development (TDD)**.
-
-> **Lënda:** Test Driven Development — Inxhinieri Softuerike, semestri 3 (Master)
-> **Faza aktuale:** Java 3 — funksionalitetet kryesore dhe testet automatike
-
-## Përshkrimi
-
-Pasagjerët duhet të gjejnë udhëtimet e lira, të rezervojnë ulëse dhe të dinë sa paguajnë; operatori duhet të shmangë mbirezervimin. Aplikacioni zbaton këtë logjikë biznesi, të mbuluar plotësisht me teste.
-
-## Funksionalitetet
-
-| # | Funksionaliteti | Klasa | Rregullat kryesore |
-|---|---|---|---|
-| 1 | Kërkimi i udhëtimeve | `RouteSearchService` | sipas origjinës, destinacionit dhe datës; pa dallim shkronjash të mëdha/vogla |
-| 2 | Rezervimi i ulëseve | `BookingService.book` | 1–10 pasagjerë; nuk lejohet mbirezervimi |
-| 3 | Llogaritja e çmimit | `PriceCalculator` | çmimi × pasagjerët, 2 decimale (half-up) |
-| 4 | Anulimi i rezervimit | `BookingService.cancel` | ulëset kthehen; anulimi i dyfishtë refuzohet |
-
-## Arkitektura
-
-Arkitekturë me shtresa: logjika e biznesit është te `service`, të dhënat te `model`, gabimet e domenit te `exception`.
 
 ~~~
 src/main/java/com/transport/ticketbooking/
