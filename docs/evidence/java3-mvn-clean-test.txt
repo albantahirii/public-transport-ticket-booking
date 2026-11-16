@@ -1,0 +1,51 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------< com.transport:ticket-booking >--------------------
+[INFO] Building Public Transport Ticket Booking System 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 24504 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ ticket-booking ---
+[INFO] Deleting /Users/tahiri/Desktop/public-transport-ticket-booking/target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ ticket-booking ---
+[INFO] skip non existing resourceDirectory /Users/tahiri/Desktop/public-transport-ticket-booking/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ ticket-booking ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 7 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ ticket-booking ---
+[INFO] skip non existing resourceDirectory /Users/tahiri/Desktop/public-transport-ticket-booking/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ ticket-booking ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ ticket-booking ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.transport.ticketbooking.service.RouteSearchServiceTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.237 s -- in com.transport.ticketbooking.service.RouteSearchServiceTest
+[INFO] Running com.transport.ticketbooking.service.BookingCancellationTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in com.transport.ticketbooking.service.BookingCancellationTest
+[INFO] Running com.transport.ticketbooking.service.PriceCalculatorTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.226 s -- in com.transport.ticketbooking.service.PriceCalculatorTest
+[INFO] Running com.transport.ticketbooking.service.BookingServiceTest
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.transport.ticketbooking.service.BookingServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 49, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.230 s
+[INFO] Finished at: 2026-11-16T21:17:58+01:00
+[INFO] ------------------------------------------------------------------------

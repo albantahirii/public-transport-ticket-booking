@@ -14,7 +14,7 @@ Priority uses MoSCoW (Must / Should / Could). "Status" refers to the end of Week
 | FR-3 | Calculate ticket price | Must | Total = unit price × passengers, rounded half-up to 2 decimals | Done |
 | FR-3.1 | Validate price input | Must | Unit price must be positive and not null; passengers 1–10 | Done |
 | FR-4 | View bookings | Should | A passenger can list existing bookings | Week 2+ |
-| FR-5 | Cancel a booking | Should | Cancelling restores the seats to the trip | Week 2+ |
+| FR-5 | Cancel a booking | Should | Cancelling restores the seats to the trip | Done (Week 3) |
 | FR-6 | Expose functionality through a REST API | Should | Endpoints for search, booking, cancel | Week 4 |
 | FR-7 | Persist data in a database (H2) | Should | Trips and bookings stored and retrievable | Week 4 |
 | FR-8 | Group discounts, payments, user accounts | Won't (for now) | — | Out of scope |

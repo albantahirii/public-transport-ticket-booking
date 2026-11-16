@@ -1,69 +1,117 @@
 # Public Transport Ticket Booking System
 
-A Java application, developed with **Test-Driven Development (TDD)**, that lets passengers search bus trips, book tickets and (in later phases) manage their reservations.
+Aplikacion Java për rezervimin e biletave të transportit publik, i zhvilluar me **Test-Driven Development (TDD)**.
 
-> **Course:** Test Driven Development — Software Engineering, Semester 3
-> **Current phase:** Week 1 — requirements, repository setup and first three tested features
+> **Lënda:** Test Driven Development — Inxhinieri Softuerike, semestri 3 (Master)
+> **Faza aktuale:** Java 3 — funksionalitetet kryesore dhe testet automatike
 
-## What problem does it solve?
+## Përshkrimi
 
-Passengers of public transport often cannot easily see which trips are available on a date, whether seats are left, and what a journey for several people costs. Operators, in turn, must avoid overbooking. This system provides the core booking logic: search trips, reserve seats safely, and calculate prices correctly.
+Pasagjerët duhet të gjejnë udhëtimet e lira, të rezervojnë ulëse dhe të dinë sa paguajnë; operatori duhet të shmangë mbirezervimin. Aplikacioni zbaton këtë logjikë biznesi, të mbuluar plotësisht me teste.
 
-## Main goal
+## Funksionalitetet
 
-The primary goal is **not only a working application but a demonstrable TDD process**: every behaviour starts as a failing test (Red), is implemented with the minimum code (Green), and is then cleaned up (Refactor). The Git history records these stages.
+| # | Funksionaliteti | Klasa | Rregullat kryesore |
+|---|---|---|---|
+| 1 | Kërkimi i udhëtimeve | `RouteSearchService` | sipas origjinës, destinacionit dhe datës; pa dallim shkronjash të mëdha/vogla |
+| 2 | Rezervimi i ulëseve | `BookingService.book` | 1–10 pasagjerë; nuk lejohet mbirezervimi |
+| 3 | Llogaritja e çmimit | `PriceCalculator` | çmimi × pasagjerët, 2 decimale (half-up) |
+| 4 | Anulimi i rezervimit | `BookingService.cancel` | ulëset kthehen; anulimi i dyfishtë refuzohet |
 
-## Technologies
+## Arkitektura
 
-| Purpose | Technology |
-|---|---|
-| Language | Java 17+ |
-| Build tool | Maven |
-| Unit testing | JUnit 5 (Jupiter) |
-| Planned later | Mockito (Week 3), Spring Boot REST API + H2 (Week 4), JaCoCo (Week 5) |
-| Version control | Git + GitHub |
+Arkitekturë me shtresa: logjika e biznesit është te `service`, të dhënat te `model`, gabimet e domenit te `exception`.
+cat > README.md <<'EOF'
+# Public Transport Ticket Booking System
 
-## Week 1 scope — three features under test
+Aplikacion Java për rezervimin e biletave të transportit publik, i zhvilluar me **Test-Driven Development (TDD)**.
 
-1. **Route search** — `RouteSearchService`: find trips by origin, destination and date; empty result for unknown routes; validation of invalid parameters.
-2. **Ticket booking** — `BookingService`: create a booking, reject when seats are insufficient, reject invalid passenger quantities (1–10 per booking).
-3. **Ticket price calculation** — `PriceCalculator`: total = unit price × passengers, rounded to 2 decimals; rejects invalid prices/quantities.
+> **Lënda:** Test Driven Development — Inxhinieri Softuerike, semestri 3 (Master)
+> **Faza aktuale:** Java 3 — funksionalitetet kryesore dhe testet automatike
 
-Not in scope yet: REST API, database, UI, booking cancellation (Weeks 2–6).
+## Përshkrimi
 
-## Project structure
+Pasagjerët duhet të gjejnë udhëtimet e lira, të rezervojnë ulëse dhe të dinë sa paguajnë; operatori duhet të shmangë mbirezervimin. Aplikacioni zbaton këtë logjikë biznesi, të mbuluar plotësisht me teste.
 
-```
+## Funksionalitetet
+
+| # | Funksionaliteti | Klasa | Rregullat kryesore |
+|---|---|---|---|
+| 1 | Kërkimi i udhëtimeve | `RouteSearchService` | sipas origjinës, destinacionit dhe datës; pa dallim shkronjash të mëdha/vogla |
+| 2 | Rezervimi i ulëseve | `BookingService.book` | 1–10 pasagjerë; nuk lejohet mbirezervimi |
+| 3 | Llogaritja e çmimit | `PriceCalculator` | çmimi × pasagjerët, 2 decimale (half-up) |
+| 4 | Anulimi i rezervimit | `BookingService.cancel` | ulëset kthehen; anulimi i dyfishtë refuzohet |
+
+## Arkitektura
+
+Arkitekturë me shtresa: logjika e biznesit është te `service`, të dhënat te `model`, gabimet e domenit te `exception`.
+
+~~~
 src/main/java/com/transport/ticketbooking/
-    model/       Trip, Booking
-    service/     RouteSearchService, BookingService, PriceCalculator, PassengerCount
-    exception/   NoSeatsAvailableException
+├── model/       Trip, Booking                       (të dhënat dhe rregullat e tyre)
+├── service/     RouteSearchService, BookingService,
+│                PriceCalculator, PassengerCount     (logjika e biznesit)
+└── exception/   NoSeatsAvailableException           (gabimet e domenit)
+
 src/test/java/com/transport/ticketbooking/service/
-    RouteSearchServiceTest, BookingServiceTest, PriceCalculatorTest
-docs/
-    PROJECT_PROPOSAL.md            project proposal (1–2 pages)
-    REQUIREMENTS_ARCHITECTURE.md   functional requirements + architecture
-    TDD_LOG.md                     Red-Green-Refactor log
-    WEEK1_REPORT.md                Week 1 submission report
-    evidence/                      raw test-run output for each TDD stage
-```
+├── RouteSearchServiceTest
+├── BookingServiceTest
+├── PriceCalculatorTest
+└── BookingCancellationTest
+~~~
 
-## How to build and run the tests
+Vendime teknike:
 
-Requirements: JDK 17+ and Maven 3.8+.
+- **`BigDecimal`** për çmimet, jo `double`, që të mos ketë gabime rrumbullakimi me para.
+- **`PassengerCount`**: rregulli "1–10 pasagjerë" është në një vend të vetëm dhe përdoret nga rezervimi e çmimi.
+- **`IllegalArgumentException`** për input të gabuar, **`IllegalStateException`** për veprim të palejuar (p.sh. anulim i dyfishtë), **`NoSeatsAvailableException`** kur s'ka ulëse.
+- Të dhënat ruhen në memorie; databaza (H2) planifikohet për javët në vijim.
 
-```bash
-mvn test
-```
+## Teknologjitë
 
-## TDD workflow used
+| Qëllimi | Teknologjia |
+|---|---|
+| Gjuha | Java 17+ |
+| Build | Maven |
+| Testimi | JUnit 5 (`junit-jupiter`, përfshirë `@ParameterizedTest`) |
+| Versionimi | Git + GitHub |
 
-1. **RED** — write the test first; run it and see it fail (compilation failure counts as red).
-2. **GREEN** — write the minimum production code to pass.
-3. **REFACTOR** — improve structure with all tests still green.
+## Konfigurimi dhe ekzekutimi
 
-See [`docs/TDD_LOG.md`](docs/TDD_LOG.md) and `git log` for the recorded cycles.
+Kërkesat: **JDK 17+** dhe **Maven 3.8+**.
 
-## Authors
+~~~bash
+git clone https://github.com/albantahirii/public-transport-ticket-booking.git
+cd public-transport-ticket-booking
+mvn clean test
+~~~
 
-- Alban Tahiri ([@albantahirii](https://github.com/albantahirii))
+Rezultati i pritur: `Tests run: 49, Failures: 0, Errors: 0` dhe `BUILD SUCCESS`.
+
+## Testet
+
+| Lloji | Shembull |
+|---|---|
+| Pozitive / negative | rezervim i vlefshëm ✔ / emër bosh, 0 pasagjerë, anulim i dyfishtë ✘ |
+| Vlerat kufitare | pasagjerët 0, 1, 2, 9, 10, 11; ulëset "saktë sa ka" dhe "+1"; ora 00:00 dhe 23:59 |
+| Branch testing | çdo `if` testohet në të dyja degët (tabela te `docs/TDD_LOG.md`) |
+| Parameterized | `PriceCalculatorTest`: `@ValueSource` dhe `@CsvSource` |
+
+## Procesi TDD
+
+1. **RED** — shkruhet testi i pari dhe dështon.
+2. **GREEN** — shkruhet kodi minimal që testi të kalojë.
+3. **REFACTOR** — përmirësohet kodi, testet mbeten të gjelbra.
+
+Çdo fazë ka commit-in e vet (`test(...): RED`, `feat(...): GREEN`, `refactor(...)`), prandaj cikli duket në `git log`. Detajet: [`docs/TDD_LOG.md`](docs/TDD_LOG.md).
+
+## Dokumentet
+
+- `docs/PROJECT_PROPOSAL_SQ.md` — propozimi i projektit
+- `docs/REQUIREMENTS_ARCHITECTURE.md` — kërkesat dhe arkitektura
+- `docs/TDD_LOG.md` — ditari i cikleve RED–GREEN–REFACTOR
+- `discount-calculator/` — ushtrim i veçantë TDD me `pom.xml` të vetin (nuk është pjesë e build-it kryesor)
+
+## Autori
+
+Alban Tahiri ([@albantahirii](https://github.com/albantahirii))
